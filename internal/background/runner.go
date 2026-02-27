@@ -40,6 +40,7 @@ type Runner struct {
 	usdKRWForex  atomic.Value
 
 	lastTickerTime atomic.Value
+	shutdownCh     chan struct{}
 }
 
 func NewRunner(cfg *config.AppConfig) (*Runner, error) {
@@ -64,15 +65,28 @@ func NewRunner(cfg *config.AppConfig) (*Runner, error) {
 	}
 
 	r := &Runner{
-		cfg:       cfg,
-		monitor:   monitor.NewKimchiMonitor(),
-		detector:  monitor.NewScenarioDetector(models.DefaultScenarioConfig()),
-		obManager: exchanges.NewOrderbookManager(),
-		executor:  transfer.NewTransferExecutor(),
-		db:        database,
+		cfg:        cfg,
+		monitor:    monitor.NewKimchiMonitor(),
+		detector:   monitor.NewScenarioDetector(models.DefaultScenarioConfig()),
+		obManager:  exchanges.NewOrderbookManager(),
+		executor:   transfer.NewTransferExecutor(),
+		db:         database,
+		shutdownCh: make(chan struct{}, 1),
 	}
 	r.ipcServer = ipc.NewIpcServer(r.handleCommand)
-
+	r.ipcServer.SetOnAllDisconnected(func() {
+		log.Info().Msg("all IPC clients disconnected, scheduling shutdown")
+		go func() {
+			time.Sleep(3 * time.Second)
+			if r.ipcServer.ClientCount() == 0 {
+				log.Info().Msg("no clients reconnected, shutting down")
+				select {
+				case r.shutdownCh <- struct{}{}:
+				default:
+				}
+			}
+		}()
+	})
 	r.usdtKRW.Store(0.0)
 	r.usdKRWForex.Store(0.0)
 	r.lastTickerTime.Store(time.Time{})
@@ -314,6 +328,11 @@ func (r *Runner) Run(ctx context.Context) error {
 		cancel()
 		wg.Wait()
 		return nil
+	case <-r.shutdownCh:
+		log.Info().Msg("shutdown requested via IPC")
+		cancel()
+		wg.Wait()
+		return nil
 	case err := <-errCh:
 		cancel()
 		wg.Wait()
@@ -390,11 +409,16 @@ func (r *Runner) handleCommand(cmd ipc.IpcCommand) {
 				r.detector.SetFutBasisThreshold(*params.Value)
 			}
 		}
+	case "shutdown":
+		log.Info().Msg("shutdown command received from TUI")
+		select {
+		case r.shutdownCh <- struct{}{}:
+		default:
+		}
 	default:
 		log.Info().Msgf("unhandled command: %s", cmd.Type)
-	}
 }
-
+}
 func (r *Runner) loadUSDTKRW() float64 {
 	value, ok := r.usdtKRW.Load().(float64)
 	if !ok {

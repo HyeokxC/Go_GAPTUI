@@ -77,7 +77,11 @@ class KimchiApp(App[None]):
         self.ipc.on_disconnect = self._on_disconnect
         _ = self.run_worker(self.ipc.connect(), name="ipc-worker", exclusive=True)
 
-    def on_unmount(self) -> None:
+    async def on_unmount(self) -> None:
+        try:
+            await self.ipc.send_shutdown()
+        except Exception:
+            pass
         self.ipc.stop()
 
     def _on_snapshot(self, data: dict[str, object]) -> None:

@@ -6,15 +6,18 @@ import (
 	"errors"
 	"net/http"
 	"sync"
+	"sync/atomic"
 
 	"github.com/gorilla/websocket"
 )
 
 type IpcServer struct {
-	mu        sync.RWMutex
-	clients   map[*websocket.Conn]bool
-	upgrader  websocket.Upgrader
-	onCommand func(cmd IpcCommand)
+	mu                 sync.RWMutex
+	clients            map[*websocket.Conn]bool
+	upgrader           websocket.Upgrader
+	onCommand          func(cmd IpcCommand)
+	onAllDisconnected  func()
+	hadClient          atomic.Bool
 }
 
 type IpcCommand struct {
@@ -32,6 +35,12 @@ func NewIpcServer(onCommand func(cmd IpcCommand)) *IpcServer {
 		},
 		onCommand: onCommand,
 	}
+}
+
+// SetOnAllDisconnected sets a callback invoked when the last client disconnects
+// (only fires if at least one client had connected before).
+func (s *IpcServer) SetOnAllDisconnected(fn func()) {
+	s.onAllDisconnected = fn
 }
 
 func (s *IpcServer) Start(ctx context.Context, addr string) error {
@@ -91,6 +100,7 @@ func (s *IpcServer) handleWebSocket(w http.ResponseWriter, r *http.Request) {
 
 	s.mu.Lock()
 	s.clients[conn] = true
+	s.hadClient.Store(true)
 	s.mu.Unlock()
 
 	go s.readClientCommands(conn)
@@ -100,8 +110,13 @@ func (s *IpcServer) readClientCommands(conn *websocket.Conn) {
 	defer func() {
 		s.mu.Lock()
 		delete(s.clients, conn)
+		remaining := len(s.clients)
 		s.mu.Unlock()
 		_ = conn.Close()
+
+		if remaining == 0 && s.hadClient.Load() && s.onAllDisconnected != nil {
+			s.onAllDisconnected()
+		}
 	}()
 
 	for {

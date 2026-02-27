@@ -63,7 +63,7 @@ class IpcClient:
     async def send_command(self, cmd: str, **params: Any) -> None:
         if self.ws is None:
             return
-        payload = json.dumps({"cmd": cmd, **params}, ensure_ascii=False)
+        payload = json.dumps({"type": cmd, "params": params}, ensure_ascii=False)
         async with self._write_lock:
             try:
                 await self.ws.send(payload)
@@ -72,3 +72,7 @@ class IpcClient:
 
     def stop(self) -> None:
         self._running = False
+
+    async def send_shutdown(self) -> None:
+        """Send shutdown command to Go backend."""
+        await self.send_command("shutdown")
