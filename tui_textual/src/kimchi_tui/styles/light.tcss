@@ -209,21 +209,6 @@
     padding: 1;
 }
 
-.light-theme DataTable {
-    border: round #d0d7de;
-    background: #ffffff;
-}
-
-.light-theme DataTable > .datatable--header {
-    background: #f6f8fa;
-    color: #24292f;
-    text-style: bold;
-}
-
-.light-theme DataTable > .datatable--cursor {
-    background: #eaeef2;
-}
-
 .light-theme #transfer-progress,
 .light-theme #transfer-history,
 .light-theme #transfer-log,

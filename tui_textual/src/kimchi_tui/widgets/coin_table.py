@@ -96,8 +96,11 @@ class CoinTable(VerticalScroll):
 
         symbols = [coin.symbol for coin in rows]
         new_keys = set(symbols)
+        stale_keys = self._row_keys - new_keys
+        added_keys = new_keys - self._row_keys
 
-        for key in self._row_keys - new_keys:
+        # Remove stale widgets
+        for key in stale_keys:
             widget = self._card_widgets.pop(key, None)
             if widget is not None:
                 _ = widget.remove()
@@ -108,6 +111,9 @@ class CoinTable(VerticalScroll):
         self._displayed_symbols = symbols
 
         self._sync_cursor(selected_symbol)
+
+        # Build order map for sort_children
+        order_map: dict[str, int] = {s: i for i, s in enumerate(symbols)}
 
         for idx, coin in enumerate(rows):
             symbol = coin.symbol
@@ -124,19 +130,19 @@ class CoinTable(VerticalScroll):
             if widget is None:
                 widget = CoinRow(symbol, content)
                 self._card_widgets[symbol] = widget
-                _ = self.mount(widget)
                 self._card_cache[symbol] = base_content
-                continue
-            if self._card_cache.get(symbol) != base_content:
+                _ = self.mount(widget)
+            elif self._card_cache.get(symbol) != base_content:
                 widget.update(content)
                 self._card_cache[symbol] = base_content
 
+        # Reorder children to match the desired symbol order
         if prev_symbols != symbols:
-            _ = self.remove_children()
-            for symbol in symbols:
-                widget = self._card_widgets.get(symbol)
-                if widget is not None:
-                    _ = self.mount(widget)
+            self.sort_children(
+                key=lambda w: order_map.get(
+                    w.symbol if isinstance(w, CoinRow) else '', len(symbols)
+                )
+            )
 
         self._scroll_cursor_into_view()
 
