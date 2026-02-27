@@ -1,0 +1,310 @@
+.light-theme {
+    background: #ffffff;
+    color: #24292f;
+}
+
+.light-theme #kimchi-header {
+    height: auto;
+    background: #f6f8fa;
+    border: round #d0d7de;
+    padding: 0 1;
+    color: #24292f;
+}
+
+.light-theme #kimchi-header-row1,
+.light-theme #kimchi-header-row2 {
+    height: 1;
+    align: left middle;
+}
+
+.light-theme #kimchi-header-row2 {
+    margin-top: 1;
+}
+
+.light-theme #header-title {
+    width: auto;
+    color: #656d76;
+    text-style: bold;
+    margin-right: 1;
+}
+
+.light-theme #header-row1-spacer {
+    width: 1fr;
+}
+
+.light-theme #header-tether-pill,
+.light-theme #header-usdt-rate,
+.light-theme #header-usd-rate,
+.light-theme #header-coin-count {
+    width: auto;
+    margin-right: 1;
+}
+
+.light-theme #header-search {
+    width: 28;
+    margin-right: 1;
+}
+
+.light-theme #header-budget {
+    width: 16;
+    margin-right: 1;
+}
+
+.light-theme .header-btn {
+    margin-right: 1;
+}
+
+.light-theme #header-exchange-a,
+.light-theme #header-exchange-b {
+    width: 11;
+}
+
+.light-theme #header-swap {
+    width: 5;
+}
+
+.light-theme #header-theme {
+    width: 10;
+    color: #9a6700;
+}
+
+.light-theme #header-transfer {
+    width: 12;
+    background: #0550ae;
+    color: #f6f8fa;
+    text-style: bold;
+}
+
+.light-theme #kimchi-statusbar {
+    height: 1;
+    background: #0969da;
+    padding: 0 1;
+    color: #ffffff;
+}
+
+.light-theme #rate-bar {
+    height: 1;
+    padding: 0 1;
+    color: #57606a;
+    background: #f6f8fa;
+}
+
+.light-theme #main-tabs {
+    background: #f6f8fa;
+}
+
+.light-theme TabPane {
+    padding: 1;
+}
+
+.light-theme #monitor-screen,
+.light-theme #scenarios-screen,
+.light-theme #transfer-screen {
+    height: 1fr;
+}
+
+.light-theme #filter-bar {
+    height: 3;
+    padding: 0 1;
+    align: left middle;
+    background: #eaeef2;
+    border: round #d0d7de;
+}
+
+.light-theme .filter-label,
+.light-theme .field-label,
+.light-theme .panel-title {
+    color: #0969da;
+    text-style: bold;
+}
+
+.light-theme Input {
+    background: #ffffff;
+    border: round #d0d7de;
+    color: #24292f;
+}
+
+.light-theme Button {
+    background: #eaeef2;
+    color: #24292f;
+    border: round #d0d7de;
+}
+
+.light-theme Button:hover {
+    background: #d8dee4;
+}
+
+.light-theme #monitor-left,
+.light-theme #transfer-left,
+.light-theme #monitor-right,
+.light-theme #transfer-right,
+.light-theme #monitor-scenario,
+.light-theme #monitor-dw,
+.light-theme #monitor-logs {
+    border: round #d0d7de;
+}
+
+.light-theme #monitor-main {
+    layout: horizontal;
+    height: 1fr;
+}
+
+.light-theme #monitor-left {
+    width: 65%;
+    margin-right: 1;
+}
+
+.light-theme #monitor-right {
+    width: 35%;
+    layout: vertical;
+}
+
+.light-theme #monitor-scenario {
+    height: 4fr;
+    padding: 1;
+}
+
+.light-theme #monitor-dw,
+.light-theme #monitor-logs {
+    height: 3fr;
+    padding: 1;
+    margin-top: 1;
+}
+
+.light-theme .row-wrap {
+    height: auto;
+    margin-bottom: 1;
+}
+
+.light-theme .chip-btn,
+.light-theme .amount-btn,
+.light-theme .chain-btn,
+.light-theme .scenario-filter-btn {
+    margin-right: 1;
+}
+
+.light-theme .filter-btn {
+    margin-right: 1;
+}
+
+.light-theme .action-btn {
+    margin-right: 1;
+    min-width: 14;
+}
+
+.light-theme .primary {
+    background: #0969da;
+    color: #ffffff;
+    text-style: bold;
+}
+
+.light-theme #transfer-left {
+    width: 70%;
+    padding: 1;
+    margin-right: 1;
+}
+
+.light-theme #transfer-right {
+    width: 30%;
+    padding: 1;
+}
+
+.light-theme DataTable {
+    border: round #d0d7de;
+    background: #ffffff;
+}
+
+.light-theme DataTable > .datatable--header {
+    background: #f6f8fa;
+    color: #24292f;
+    text-style: bold;
+}
+
+.light-theme DataTable > .datatable--cursor {
+    background: #eaeef2;
+}
+
+.light-theme #transfer-progress,
+.light-theme #transfer-history,
+.light-theme #transfer-log,
+.light-theme #scenario-log,
+.light-theme #scenario-screen-log,
+.light-theme #logs-view,
+.light-theme #recent-log-view {
+    border: round #d0d7de;
+    background: #ffffff;
+}
+
+.light-theme #coin-table {
+    background: #ffffff;
+    border: round #d0d7de;
+}
+
+.light-theme #coin-detail-panel {
+    background: #ffffff;
+    border: round #d0d7de;
+    padding: 1;
+    margin-top: 1;
+}
+
+.light-theme #scenario-log {
+    background: #ffffff;
+    border: round #d0d7de;
+}
+
+.light-theme #scenario-filter-row {
+    height: auto;
+    align: left middle;
+}
+
+.light-theme #dw-scroll {
+    background: #ffffff;
+    border: round #d0d7de;
+}
+
+.light-theme .coin-row {
+    height: auto;
+    margin-bottom: 1;
+}
+
+.light-theme .coin-row-selected {
+    background: #eaeef2;
+}
+
+.light-theme #scenario-header {
+    height: auto;
+    margin-bottom: 1;
+}
+
+
+.light-theme .hidden {
+    display: none;
+}
+
+.light-theme .sub-label {
+    width: 6;
+    color: #57606a;
+}
+
+.light-theme #addr-status {
+    margin-left: 1;
+    color: #57606a;
+}
+
+.light-theme #coin-input {
+    width: 16;
+}
+
+.light-theme #from-to-row {
+    height: auto;
+    margin-bottom: 1;
+}
+
+.light-theme #from-section {
+    width: 1fr;
+}
+
+.light-theme #to-section {
+    width: 1fr;
+    margin-left: 1;
+}

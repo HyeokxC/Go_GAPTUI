@@ -1,0 +1,317 @@
+.dark-theme {
+    background: #0d1117;
+    color: #e6edf3;
+}
+
+.dark-theme #kimchi-header {
+    height: auto;
+    background: #21262d;
+    border: round #30363d;
+    padding: 0 1;
+    color: #e6edf3;
+}
+
+.dark-theme #kimchi-header-row1,
+.dark-theme #kimchi-header-row2 {
+    height: 1;
+    align: left middle;
+}
+
+.dark-theme #kimchi-header-row2 {
+    margin-top: 1;
+}
+
+.dark-theme #header-title {
+    width: auto;
+    color: #8b949e;
+    text-style: bold;
+    margin-right: 1;
+}
+
+.dark-theme #header-row1-spacer {
+    width: 1fr;
+}
+
+.dark-theme #header-tether-pill,
+.dark-theme #header-usdt-rate,
+.dark-theme #header-usd-rate,
+.dark-theme #header-coin-count {
+    width: auto;
+    margin-right: 1;
+}
+
+.dark-theme #header-search {
+    width: 28;
+    margin-right: 1;
+}
+
+.dark-theme #header-budget {
+    width: 16;
+    margin-right: 1;
+}
+
+.dark-theme .header-btn {
+    margin-right: 1;
+}
+
+.dark-theme #header-exchange-a,
+.dark-theme #header-exchange-b {
+    width: 11;
+}
+
+.dark-theme #header-swap {
+    width: 5;
+}
+
+.dark-theme #header-theme {
+    width: 10;
+    color: #484f58;
+}
+
+.dark-theme #header-transfer {
+    width: 12;
+    background: #1f6feb;
+    color: #0d1117;
+    text-style: bold;
+}
+
+.dark-theme #kimchi-statusbar {
+    height: 1;
+    background: #0f3460;
+    padding: 0 1;
+    color: #e6edf3;
+}
+
+.dark-theme #rate-bar {
+    height: 1;
+    padding: 0 1;
+    color: #8b949e;
+    background: #161b22;
+}
+
+.dark-theme #main-tabs {
+    background: #161b22;
+}
+
+.dark-theme TabPane {
+    padding: 1;
+}
+
+.dark-theme #monitor-screen,
+.dark-theme #scenarios-screen,
+.dark-theme #transfer-screen {
+    height: 1fr;
+}
+
+.dark-theme #filter-bar {
+    height: 3;
+    padding: 0 1;
+    align: left middle;
+    background: #1c2128;
+    border: round #30363d;
+}
+
+.dark-theme .filter-label,
+.dark-theme .field-label {
+    width: 12;
+    text-style: bold;
+    color: #58a6ff;
+}
+
+.dark-theme Input {
+    background: #161b22;
+    border: round #30363d;
+    color: #e6edf3;
+}
+
+.dark-theme Button {
+    background: #1c2128;
+    color: #e6edf3;
+    border: round #30363d;
+}
+
+.dark-theme Button:hover {
+    background: #30363d;
+}
+
+.dark-theme .panel-title {
+    height: 1;
+    text-style: bold;
+    color: #58a6ff;
+    margin: 0 0 1 0;
+}
+
+.dark-theme #monitor-main {
+    layout: horizontal;
+    height: 1fr;
+}
+
+.dark-theme #monitor-left {
+    width: 65%;
+    margin-right: 1;
+}
+
+.dark-theme #monitor-right {
+    width: 35%;
+    layout: vertical;
+}
+
+.dark-theme #monitor-scenario {
+    height: 4fr;
+    border: round #30363d;
+    padding: 1;
+}
+
+.dark-theme #monitor-dw {
+    height: 3fr;
+    border: round #30363d;
+    padding: 1;
+    margin-top: 1;
+}
+
+.dark-theme #monitor-logs {
+    height: 3fr;
+    border: round #30363d;
+    padding: 1;
+    margin-top: 1;
+}
+
+.dark-theme DataTable {
+    border: round #30363d;
+    background: #1c2128;
+}
+
+.dark-theme DataTable > .datatable--header {
+    background: #161b22;
+    color: #e6edf3;
+    text-style: bold;
+}
+
+.dark-theme DataTable > .datatable--cursor {
+    background: #30363d;
+}
+
+.dark-theme .row-wrap {
+    height: auto;
+    margin-bottom: 1;
+}
+
+.dark-theme .chip-btn,
+.dark-theme .amount-btn,
+.dark-theme .chain-btn,
+.dark-theme .scenario-filter-btn {
+    margin-right: 1;
+}
+
+.dark-theme .filter-btn {
+    margin-right: 1;
+}
+
+.dark-theme .action-btn {
+    margin-right: 1;
+    min-width: 14;
+}
+
+.dark-theme .primary {
+    background: #58a6ff;
+    color: #0d1117;
+    text-style: bold;
+}
+
+.dark-theme #transfer-left {
+    width: 70%;
+    border: round #30363d;
+    padding: 1;
+    margin-right: 1;
+}
+
+.dark-theme #transfer-right {
+    width: 30%;
+    border: round #30363d;
+    padding: 1;
+}
+
+.dark-theme #transfer-progress,
+.dark-theme #transfer-history,
+.dark-theme #transfer-log,
+.dark-theme #scenario-log,
+.dark-theme #scenario-screen-log,
+.dark-theme #logs-view,
+.dark-theme #recent-log-view {
+    border: round #30363d;
+    background: #1c2128;
+}
+
+
+.dark-theme #coin-table {
+    background: #1c2128;
+    border: round #30363d;
+}
+
+.dark-theme #coin-detail-panel {
+    background: #1c2128;
+    border: round #30363d;
+    padding: 1;
+    margin-top: 1;
+}
+
+.dark-theme #scenario-log {
+    background: #1c2128;
+    border: round #30363d;
+}
+
+.dark-theme #scenario-filter-row {
+    height: auto;
+    align: left middle;
+}
+
+.dark-theme #dw-scroll {
+    background: #1c2128;
+    border: round #30363d;
+}
+
+.dark-theme .coin-row {
+    height: auto;
+    margin-bottom: 1;
+}
+
+.dark-theme .coin-row-selected {
+    background: #30363d;
+}
+
+.dark-theme #scenario-header {
+    height: auto;
+    margin-bottom: 1;
+}
+
+.dark-theme .hidden {
+    display: none;
+}
+
+.dark-theme .sub-label {
+    width: 6;
+    color: #8b949e;
+}
+
+.dark-theme #addr-status {
+    margin-left: 1;
+    color: #8b949e;
+}
+
+.dark-theme #coin-input {
+    width: 16;
+}
+
+.dark-theme #from-to-row {
+    height: auto;
+    margin-bottom: 1;
+}
+
+.dark-theme #from-section {
+    width: 1fr;
+}
+
+.dark-theme #to-section {
+    width: 1fr;
+    margin-left: 1;
+}

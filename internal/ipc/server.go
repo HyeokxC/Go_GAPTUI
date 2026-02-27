@@ -37,6 +37,7 @@ func NewIpcServer(onCommand func(cmd IpcCommand)) *IpcServer {
 func (s *IpcServer) Start(ctx context.Context, addr string) error {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/ws", s.handleWebSocket)
+	mux.HandleFunc("/", s.handleWebSocket)
 
 	httpServer := &http.Server{
 		Addr:    addr,

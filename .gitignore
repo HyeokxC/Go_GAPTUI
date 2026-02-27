@@ -1,0 +1,14 @@
+/target
+.env
+.DS_Store
+node_modules
+*.db
+*.db-shm
+*.db-wal
+.claude
+.omc
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+/kimchi
