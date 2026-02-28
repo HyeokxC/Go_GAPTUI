@@ -1,0 +1,17 @@
+# Kimchi Premium Monitor Configuration
+
+# Auto-discover all common symbols across Binance, Upbit, and Bithumb
+auto_discover_symbols = true
+
+# Manual symbol list (only used if auto_discover_symbols = false)
+# symbols = ["BTC", "ETH", "XRP"]
+
+[exchange]
+poll_interval_ms = 500      # How often to fetch prices (ms)
+request_timeout_secs = 10   # API request timeout
+
+[dashboard]
+refresh_ms = 200            # Screen refresh interval
+stale_display_secs = 30     # Remove coins not updated for this duration
+
+# API Keys: Configure in .env file (see .env.example)
